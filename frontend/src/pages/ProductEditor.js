@@ -106,9 +106,9 @@ const ProductEditor = () => {
         onChange={(e) => setSearchTerm(e.target.value)}
       />
 
-      <p style={{ textAlign: "left" }}>
-        {selectedRows?.length} row(s) selected
-      </p>
+      <div className="count-section">
+        Selected <div className="selected-count">{selectedRows?.length}</div>
+      </div>
 
       <table className="product-table">
         <thead>

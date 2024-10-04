@@ -139,3 +139,22 @@ button.delete-button:hover {
 button.delete-button:disabled {
   background-color: #f5a097;
 }
+
+.count-section {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 8px;
+  font-weight: 600;
+}
+
+.selected-count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: darkgreen;
+  border-radius: 5px;
+  min-width: 20px;
+  height: 20px;
+  color: white;
+}
