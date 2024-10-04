@@ -1,0 +1,141 @@
+.App {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 10px solid grey;
+  min-height: 100vh;
+}
+
+.heading {
+  color: white;
+  background-color: #555151;
+  border-radius: 20px;
+  font-style: italic;
+  padding: 5px 10px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: all 0.3s;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+table th,
+table td {
+  padding: 12px 16px;
+  text-align: left;
+}
+
+table th {
+  background-color: #4caf50;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tr:hover {
+  background-color: #f1f1f1;
+}
+
+table tr td {
+  border: 1px solid #ddd;
+}
+
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+
+table tr {
+  transition: background-color 0.3s ease;
+}
+
+table tr[style*="gray"] {
+  background-color: #e0e0e0 !important;
+}
+
+table tr.selected-row {
+  background-color: gray !important;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pagination button {
+  padding: 8px 16px;
+  margin: 0 4px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+  background-color: #45a049;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination .active {
+  background-color: #333;
+}
+
+button[disabled] {
+  cursor: not-allowed;
+}
+
+button[disabled]:hover {
+  background-color: #ccc;
+}
+
+button.delete-button {
+  background-color: red;
+  border: none;
+  padding: 12px 20px;
+  color: white;
+  font-size: 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+button.delete-button:hover {
+  background-color: darkred;
+}
+
+button.delete-button:disabled {
+  background-color: #f5a097;
+}
