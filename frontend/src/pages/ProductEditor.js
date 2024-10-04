@@ -96,6 +96,8 @@ const ProductEditor = () => {
         onChange={(e) => setSearchTerm(e.target.value)}
       />
 
+      <p style={{ textAlign: "left" }}>{selectedRows.length} row(s) selected</p>
+
       <table className="product-table">
         <thead>
           <tr>
@@ -153,7 +155,7 @@ const ProductEditor = () => {
                 </td>
                 <td>{product.title}</td>
                 <td>{product.description}</td>
-                <td>{product.price}</td>
+                <td>₹{product.price}</td>
                 <td>{product.brand}</td>
               </tr>
             ))
