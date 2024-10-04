@@ -10,18 +10,18 @@ const ProductEditor = () => {
   const [itemsPerPage] = useState(10);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await axios.get("http://localhost:5000/products");
-        setProducts(response?.data?.products || []);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/products");
+      setProducts(response?.data?.products || []);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchProducts();
   }, []);
 
@@ -36,7 +36,7 @@ const ProductEditor = () => {
   }, [searchTerm]);
 
   const filteredProducts = products?.filter((product) =>
-    product.title.toLowerCase().startsWith(debouncedSearchTerm.toLowerCase())
+    product?.title?.toLowerCase().startsWith(debouncedSearchTerm?.toLowerCase())
   );
 
   const totalPages = Math.ceil((filteredProducts?.length || 0) / itemsPerPage);
@@ -58,10 +58,20 @@ const ProductEditor = () => {
   };
 
   const deleteSelectedProducts = () => {
-    setProducts(
-      products.filter((product) => !selectedRows.includes(product.id))
+    const remainingProducts = products.filter(
+      (product) => !selectedRows.includes(product.id)
     );
+
+    setProducts(remainingProducts);
     setSelectedRows([]);
+
+    const newTotalPages = Math.ceil(remainingProducts.length / itemsPerPage);
+
+    if (newTotalPages < page && newTotalPages > 0) {
+      setPage(newTotalPages);
+    } else if (newTotalPages === 0) {
+      setPage(1);
+    }
   };
 
   const getPaginationNumbers = () => {
@@ -96,7 +106,9 @@ const ProductEditor = () => {
         onChange={(e) => setSearchTerm(e.target.value)}
       />
 
-      <p style={{ textAlign: "left" }}>{selectedRows.length} row(s) selected</p>
+      <p style={{ textAlign: "left" }}>
+        {selectedRows?.length} row(s) selected
+      </p>
 
       <table className="product-table">
         <thead>
@@ -204,8 +216,6 @@ const ProductEditor = () => {
           </button>
         </div>
       </div>
-
-      <p>{selectedRows?.length} row(s) selected</p>
     </div>
   );
 };
