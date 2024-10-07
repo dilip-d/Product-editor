@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import useDebounce from "../hooks/useDebounce";
+import SEO from "../components/SEO";
 
 const ProductEditor = () => {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(searchTerm);
+  // const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(searchTerm);
   const [selectedRows, setSelectedRows] = useState([]);
   const [page, setPage] = useState(1);
   const [itemsPerPage] = useState(10);
@@ -25,15 +27,17 @@ const ProductEditor = () => {
     fetchProducts();
   }, []);
 
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedSearchTerm(searchTerm);
-    }, 300);
+  // useEffect(() => {
+  //   const handler = setTimeout(() => {
+  //     setDebouncedSearchTerm(searchTerm);
+  //   }, 300);
 
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [searchTerm]);
+  //   return () => {
+  //     clearTimeout(handler);
+  //   };
+  // }, [searchTerm]);
+
+  const debouncedSearchTerm = useDebounce(searchTerm, 300);
 
   const filteredProducts = products?.filter((product) =>
     product?.title?.toLowerCase().startsWith(debouncedSearchTerm?.toLowerCase())
@@ -96,6 +100,14 @@ const ProductEditor = () => {
 
   return (
     <div className="container">
+      <SEO
+        title="Product List"
+        description="View and manage a list of products in the dashboard, including search, pagination, and deletion functionalities."
+        keywords="products, e-commerce, manage, search, pagination"
+        image="%PUBLIC_URL%/product-list-thumbnail  .jpg"
+        url="http://localhost:3000/products"
+      />
+
       <h1 className="heading">Product List</h1>
 
       <input
