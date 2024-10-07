@@ -27,6 +27,36 @@
    npm install
    ```
 
+## Testing the Application
+
+### Testing the Frontend
+
+1. Navigate to the frontend folder:
+
+   ```bash
+   cd ../frontend
+   ```
+
+2. Start the test:
+
+   ```bash
+   npm test
+   ```
+
+### Testing the Backend
+
+1. Navigate to the backend folder:
+
+   ```bash
+   cd ../backend
+   ```
+
+2. Start the test:
+
+   ```bash
+   npm test
+   ```
+
 ## Running the Application
 
 ### Running the Frontend
